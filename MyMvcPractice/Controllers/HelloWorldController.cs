@@ -52,17 +52,41 @@ namespace MyMvcPractice.Controllers
         /// <returns></returns>
         public ActionResult ListOfCountries()
         {
-            // We can use dynamic property with the ViewBag. I named Countries but, in theory, we can give any valid name.
-            // ViewBag uses the dynamic feature that was introduced in C# 4.0. It allows an object to have properties dynamically added to it.
-            // ViewBag and ViewData are are a mechanism to pass data from controller to view.
-            // Note: To pass data from the controller to the view it is always a good practice to use strongly typed view models.
-            // We use @ symbol to switch between HTML and C# code.
+            //// We can use dynamic property with the ViewBag. I named Countries but, in theory, we can give any valid name.
+            //// ViewBag uses the dynamic feature that was introduced in C# 4.0. It allows an object to have properties dynamically added to it. 
+            //// One downside of dynamic property is that they do not provide compile time error checking.
+            //// ViewBag and ViewData are are a mechanism to pass data from controller to view.
+            //// Note: To pass data from the controller to the view it is always a good practice to use strongly typed view models.
+            //// We use @ symbol to switch between HTML and C# code.
             this.ViewBag.Countries = new List<string>
             {
                 "US",
                 "India",
                 "UK",
                 "Australia"
+            };
+
+            return View();
+        }
+
+        /// <summary>
+        /// Renders view. This example uses ViewData to pass data from the controller to the view.
+        /// ViewData does not provide compile time error checking just like the ViewBag. For example, if you misspell the 
+        /// key string (in case of ViewData) and dynamic property (in case of ViewBag), you don't get to know error while 
+        /// compiling instead, you will get a runtime error. Internally ViewBag properties are stored as name/value pairs in
+        /// the ViewData dictionary.
+        /// To pass data from controller to a view, it is always a good practice to use strongly typed view models over ViewData
+        /// and ViewBag. Strongly typed view models provide compile time error checking.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ListOfCountriesUsingViewData()
+        {
+            this.ViewData["Countries"] = new List<string>
+            {
+                "Germany",
+                "Sweden",
+                "Italy",
+                "France"
             };
 
             return View();

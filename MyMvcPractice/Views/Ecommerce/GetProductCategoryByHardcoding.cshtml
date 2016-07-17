@@ -1,0 +1,42 @@
+﻿@model MyMvcPractice.Models.ProductCategory
+
+@{
+    ViewBag.Title = "Get Product Category By Hardcoding";
+}
+
+<h2>Get Product Category By Hardcoding</h2>
+
+<div>
+    <h4>Product Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Product Category Id: 
+        </dt>
+
+        <dd>
+            @Model.CategoryId
+        </dd>
+
+        <dt>
+            Name: 
+        </dt>
+
+        <dd>
+            @Model.Name
+        </dd>
+
+        <dt>
+            Parent Category Id: 
+        </dt>
+
+        <dd>
+            @Model.ParentCategoryId
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
